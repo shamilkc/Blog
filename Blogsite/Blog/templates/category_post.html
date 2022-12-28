@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+{% block title %}Category-posts{% endblock %}
+
+{% block content %}
+
+<h2 style="text-align: center;">{{categoryHeading|title}}</h2>
+
+{% for catblog in categoryblogs%}
+<a href=""><p></p></a>
+
+<a href="{% url 'single_post' catblog.id %}">
+
+   
+
+    <div class="card col-lg-3 col-md-4" style="float: left;border: 3px solid black; color: #000;" >
+        <img src="{{catblog.image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{catblog.title|title}}</h5>
+          <p class="card-text">{{catblog.category|title}}</p>
+          <p class="card-text">{{catblog.text|truncatewords:20}}</p>
+          
+        </div>
+      </div>
+</a>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+
+{% block title %}Category{% endblock %}
+
+{% block content %}
+<div class="container">
+<h1>Categories</h1>
+{% for cat in category%}
+<a href="{% url 'category_post' cat.id %}">
+<div class="category-view">
+    <p>{{cat.name|title}}</p>
+</div>
+</a>
+{% endfor %}
+</div>
+{% endblock %}

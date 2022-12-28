@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+
+{% block title %}post{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    
+    <div class="title">
+        <h3>{{post.title|title}}</h3>
+    </div>
+    <div class="category-show">
+        <h5>{{post.category|title}}</h5>
+    </div>
+    <div class="image-show">
+        <img src="{{post.image.url}}" height="430px" width="100%">
+    </div>
+    <div class="post-body">
+        <p>{{post.text}}</p>
+    </div>
+
+
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <h4>Write your comments</h4>
+            {{field}}
+            {% if request.user.is_authenticated %}
+            <br>
+            <input type="submit">
+            {% else %}
+            <p style="color: red;">Please login to post comments <a style="color: rgb(68, 97, 226);" href="{% url 'account_login' %}">Login</a></p>
+            {% endif %}
+        </form>
+    
+        {% endfor %}
+    </div>
+    
+    <h3>Comments</h3>
+    
+        
+    {% for comment in comments %}
+    <div style="border: 1px solid white; padding: 3px;margin: 5px;">
+    <p><strong>@{{comment.user}}</strong>  {{comment.updated|timesince}} ago</p><hr>
+    <p>{{comment.text}}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

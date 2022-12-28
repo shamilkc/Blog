@@ -1,0 +1,26 @@
+
+{% extends 'base.html'%}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div>
+{% for blog in blog_posts %}
+<a href="{% url 'single_post' blog.id %}">
+   
+
+    <div class="card col-lg-3 col-md-4" style="float: left;border: 3px solid black; color: #000;" >
+        <img src="{{blog.image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{blog.title|title}}</h5>
+          <p class="card-text">{{blog.category|title}}</p>
+          <p class="card-text">{{blog.text|truncatewords:20}}</p>
+          
+        </div>
+      </div>
+</a>
+{% endfor %}
+</div>
+
+{% endblock %}
