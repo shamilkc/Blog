@@ -1,0 +1,40 @@
+
+{% extends 'base.html'%}
+
+{% block title %}Blogs{% endblock %}
+
+{% block content %}
+<div id="searchdiv" style="background-color: rgb(15, 14, 13); height: 80px;width: 100%; text-align: center;padding-top: 15px;">
+  <div style="height: auto; width: 50%; text-align: center;margin-left: 25%;">
+  <form action="" method="get" class="d-flex" role="search">
+    
+    <input class="form-control me-2"  type="search" name="q" placeholder="Search blogs" >
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+</div>
+</div>
+<div class="container">
+  <div class="row">
+    {% for blog in blog_posts %}
+  <div class="col-lg-3 col-md-4">
+  <a href="{% url 'single_post' blog.id %}">
+     <div class="card h-100" style="border: 3px solid black; color: #000; " >
+          <img src="{{blog.image.url}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{blog.title|title}}</h5>
+            <p class="card-text">{{blog.category|title}}</p>
+            <p class="card-text">{{blog.text|truncatewords:20}}</p>
+            
+          </div>
+        </div>
+  </a>
+  </div>
+  {% endfor %}
+
+  </div>
+</div>
+
+  
+  
+
+{% endblock %}

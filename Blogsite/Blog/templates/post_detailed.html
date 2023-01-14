@@ -5,6 +5,7 @@
 {% block content %}
 
 <div class="container">
+    <div class="container">
     
     <div class="title">
         <h3>{{post.title|title}}</h3>
@@ -28,7 +29,7 @@
             {{field}}
             {% if request.user.is_authenticated %}
             <br>
-            <input type="submit">
+            <input type="submit" class="btn btn-primary">
             {% else %}
             <p style="color: red;">Please login to post comments <a style="color: rgb(68, 97, 226);" href="{% url 'account_login' %}">Login</a></p>
             {% endif %}
@@ -47,5 +48,5 @@
     </div>
     {% endfor %}
 </div>
-
+</div>
 {% endblock %}

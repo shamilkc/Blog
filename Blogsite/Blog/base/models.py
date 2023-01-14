@@ -34,4 +34,19 @@ class Comment(models.Model):
 
     approved_comment = models.BooleanField(default=True)
 
+
+class Email(models.Model):
+    email = models.EmailField(null=False,blank=False)
+
+    def __str__(self):
+        return self.email
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=250)
+    email = models.EmailField(null=False,blank=False)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
     

@@ -5,9 +5,18 @@
 {% block content %}
 <div class="container">
 <h1 style="text-align: center;">About</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque in unde assumenda, tenetur iusto at commodi optio exercitationem adipisci magni ab praesentium ullam dolores, accusantium dolor placeat, soluta dolore repellat.</p>
+<p>Welcome to our blog! We are a team of writers and researchers who are passionate about exploring a wide range of topics, from the latest news and current events to personal development and self-improvement. Our goal is to provide our readers with high-quality, informative content that is both interesting and thought-provoking. We strive to bring a fresh perspective to the topics we cover and to present them in a way that is engaging and easy to understand. We hope that our blog will serve as a valuable resource for anyone looking to learn more about the world around them and to live their best lives. Thank you for visiting us and we hope you enjoy reading our articles as much as we enjoy writing them!</p>
     <div class="contact">
+        <div class="container">
         <h1 style="text-align: center;">Contact</h1>
+        <form method="post" action="/contactsub/">
+            {% csrf_token %}
+        Your name: <input type="text" name="name"class="form-control">
+        Your email: <input type="text" name="email"class="form-control">
+        Your message: <textarea name="message"class="form-control "></textarea><br>
+        <input type="submit" class="form-control btn btn-primary"><br>
+    </form><br>
+    </div>
     </div>
 </div>
 

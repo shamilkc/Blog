@@ -2,15 +2,23 @@
 
 {% block title %}Category{% endblock %}
 
+
 {% block content %}
+
+
 <div class="container">
-<h1>Categories</h1>
-{% for cat in category%}
-<a href="{% url 'category_post' cat.id %}">
-<div class="category-view">
-    <p>{{cat.name|title}}</p>
+    <div class="row">
+            <h1>Categories</h1>
+            {% for cat in category%}
+            <div class="col-lg-2 col-md-3 col-xs-4">
+            <a href="{% url 'category_post' cat.id %}">
+            <div class="category-view ">
+                <p>{{cat.name|title}}</p>
+            </div>
+            </a>
+            </div>
+            {% endfor %}
+    </div>
 </div>
-</a>
-{% endfor %}
-</div>
+
 {% endblock %}
